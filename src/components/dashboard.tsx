@@ -11,18 +11,22 @@ export default function Component() {
     <div className="bg-background text-foreground p-6 rounded-lg shadow-lg">
       <div className="flex flex-col gap-4">
         <div>
-          <h1 className="text-2xl font-bold">Trading Bot Dashboard</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl text-black font-bold">
+            Trading Bot Dashboard
+          </h1>
+          <p className="text-muted-foreground text-black">
             Get a comprehensive overview of your trading bot's performance.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <Card className="bg-card text-card-foreground p-4 rounded-lg">
+          <Card className="bg-card text-card-foreground p-4 rounded-lg text-black">
             <div className="flex items-center gap-2">
               <DollarSignIcon className="w-6 h-6" />
               <div>
-                <p className="text-sm text-muted-foreground">Current Balance</p>
-                <p className="text-2xl font-bold">$15,234.56</p>
+                <p className="text-sm text-muted-foreground text-gray-500">
+                  Current Balance
+                </p>
+                <p className="text-2xl font-bold text-black">$15,234.56</p>
               </div>
             </div>
           </Card>
@@ -30,17 +34,21 @@ export default function Component() {
             <div className="flex items-center gap-2">
               <TrendingUpIcon className="w-6 h-6 text-green-500" />
               <div>
-                <p className="text-sm text-muted-foreground">Profit/Loss</p>
+                <p className="text-sm text-muted-foreground text-gray-500">
+                  Profit/Loss
+                </p>
                 <p className="text-2xl font-bold text-green-500">+$1,234.56</p>
               </div>
             </div>
           </Card>
           <Card className="bg-card text-card-foreground p-4 rounded-lg">
             <div className="flex items-center gap-2">
-              <PercentIcon className="w-6 h-6" />
+              <PercentIcon className="w-6 h-6 text-black" />
               <div>
-                <p className="text-sm text-muted-foreground">Win/Loss Ratio</p>
-                <p className="text-2xl font-bold">75%</p>
+                <p className="text-sm text-muted-foreground text-gray-500">
+                  Win/Loss Ratio
+                </p>
+                <p className="text-2xl font-bold text-black">75%</p>
               </div>
             </div>
           </Card>
@@ -48,7 +56,9 @@ export default function Component() {
             <div className="flex items-center gap-2">
               <TrendingDownIcon className="w-6 h-6 text-red-500" />
               <div>
-                <p className="text-sm text-muted-foreground">Drawdown</p>
+                <p className="text-sm text-muted-foreground text-gray-500">
+                  Drawdown
+                </p>
                 <p className="text-2xl font-bold text-red-500">-$456.78</p>
               </div>
             </div>
