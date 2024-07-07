@@ -35,7 +35,7 @@ const TwittSection = () => {
   return (
     <section className="flex flex-col items-center justify-center w-full h-screen bg-background">
       <div className="max-w-md w-full space-y-4">
-        <h3 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-xl text-center mb-6">
+        <h3 className="text-4xl font-bold tracking-tight text-white sm:text-xl text-center mb-6">
           Tweet Sentiment Analysis
         </h3>
         <Textarea

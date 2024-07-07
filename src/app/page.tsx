@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import Image from "next/image";
 import logo from "../app/assets/logo.png";
 import TweetSection from "@/components/tweetSection";
+import UploadCsv from "@/components/uploadCsv";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -186,6 +187,9 @@ export default function Example() {
           <Dashboard />
         </div>
         <div className="mx-auto max-w-5xl pb-32">
+          <UploadCsv />
+        </div>
+        <div className="mx-auto max-w-5xl pb-32 bg-gray-800 rounded-3xl">
           <TweetSection />
         </div>
       </div>
