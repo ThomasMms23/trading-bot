@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 
-const uploadCsv = () => {
+const UploadCsv = () => {
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setFile(event.target.files[0]);
+    }
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!file) {
+      alert("Please select a file first!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("https://your-api-endpoint.com/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Success:", data);
+      } else {
+        console.error("Error:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <section className="w-full max-w-md mx-auto py-12 md:py-16 text-gray-800">
       <div className="space-y-4">
@@ -13,24 +48,27 @@ const uploadCsv = () => {
             Drag and drop a CSV file to analyse the data
           </p>
         </div>
-        <div className="flex justify-center">
-          <div className="group relative flex h-32 w-full max-w-lg cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-indigo-600 bg-background transition-colors hover:border-primary-foreground">
-            <UploadIcon className="h-8 w-8 text-primary group-hover:text-primary-foreground" />
-            <p className="mt-2 text-sm font-medium text-muted-foreground group-hover:text-primary-foreground">
-              Drop files here or click to upload
-            </p>
-            <input
-              type="file"
-              accept=".csv"
-              className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
-            />
+        <form onSubmit={handleSubmit}>
+          <div className="flex justify-center">
+            <div className="group relative flex h-32 w-full max-w-lg cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-indigo-600 bg-background transition-colors hover:border-primary-foreground">
+              <UploadIcon className="h-8 w-8 text-primary group-hover:text-primary-foreground" />
+              <p className="mt-2 text-sm font-medium text-muted-foreground group-hover:text-primary-foreground">
+                Drop files here or click to upload
+              </p>
+              <input
+                type="file"
+                accept=".csv"
+                className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                onChange={handleFileChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="flex justify-center">
-          <Button type="submit" className="w-full bg-indigo-600 text-white">
-            Upload File
-          </Button>
-        </div>
+          <div className="flex justify-center mt-4">
+            <Button type="submit" className="w-full bg-indigo-600 text-white">
+              Upload File
+            </Button>
+          </div>
+        </form>
       </div>
     </section>
   );
@@ -59,4 +97,4 @@ function UploadIcon(
   );
 }
 
-export default uploadCsv;
+export default UploadCsv;
