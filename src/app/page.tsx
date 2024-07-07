@@ -5,6 +5,7 @@ import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Dashboard from "@/components/dashboard";
 import Image from "next/image";
+import TweetSection from "@/components/tweetSection";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -181,6 +182,9 @@ export default function Example() {
         </div>
         <div className="mx-auto max-w-5xl pb-32">
           <Dashboard />
+        </div>
+        <div className="mx-auto max-w-5xl pb-32">
+          <TweetSection />
         </div>
       </div>
     </div>
