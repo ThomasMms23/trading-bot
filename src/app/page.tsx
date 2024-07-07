@@ -4,7 +4,9 @@ import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Dashboard from "@/components/dashboard";
+import Footer from "@/components/footer";
 import Image from "next/image";
+import logo from "../app/assets/logo.png";
 import TweetSection from "@/components/tweetSection";
 
 const navigation = [
@@ -25,14 +27,14 @@ export default function Example() {
           className="flex items-center justify-between p-6 lg:px-8"
         >
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <Image
                 alt=""
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                width={32}
-                height={32}
-                className="h-8 w-auto"
+                src={logo}
+                width={42}
+                height={42}
+                className="h-10 w-auto"
               />
             </a>
           </div>
@@ -133,7 +135,7 @@ export default function Example() {
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-48">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Announcing our next round of funding.{" "}
@@ -187,6 +189,7 @@ export default function Example() {
           <TweetSection />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
