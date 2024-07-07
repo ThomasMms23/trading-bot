@@ -65,7 +65,7 @@ export default function Component() {
           </Card>
         </div>
         <div>
-          <LinechartChart className="aspect-[9/4]" />
+          <LinechartChart className="aspect-[9/4] text-black" />
         </div>
       </div>
     </div>
