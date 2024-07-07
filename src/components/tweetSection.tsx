@@ -35,11 +35,14 @@ const TwittSection = () => {
   return (
     <section className="flex flex-col items-center justify-center w-full h-screen bg-background">
       <div className="max-w-md w-full space-y-4">
+        <h3 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-xl text-center mb-6">
+          Tweet Sentiment Analysis
+        </h3>
         <Textarea
           placeholder="Enter the tweet's text here..."
           value={tweetText}
           onChange={handleTextareaChange}
-          className="p-4 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+          className="p-4 rounded-md border border-input bg-background text-black focus:outline-none focus:ring-1 focus:ring-primary"
         />
         <Button
           onClick={handleSubmit}
