@@ -13,6 +13,11 @@ const UploadCsv = () => {
     }
   };
 
+  const handleReset = () => {
+    setFile(null);
+    setResult(null);
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!file) {
@@ -49,10 +54,10 @@ const UploadCsv = () => {
   };
 
   return (
-    <section className="w-full max-w-md mx-auto py-12 md:py-16 text-gray-800">
-      <div className="space-y-4">
-        <div className="space-y-2 text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-indigo-600">
+    <section id="csv" className="w-full max-w-4xl mx-auto py-12 md:py-16 text-gray-800">
+      <div className="space-y-8">
+        <div className="space-y-2 mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-indigo-600">
             Upload a CSV File
           </h2>
           <p className="text-gray-600">
@@ -60,56 +65,65 @@ const UploadCsv = () => {
             contains the following columns: Date, Open, High, Low, Close, Volume.
           </p>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="flex justify-center">
-            <div
-              className={`group relative flex h-32 w-full max-w-lg cursor-pointer flex-col items-center justify-center rounded-md border-2 ${
-                file ? "border-green-600 bg-green-100" : "border-dashed border-indigo-600 bg-white"
-              } transition-colors hover:border-indigo-800`}
-            >
-              <UploadIcon className="h-8 w-8 text-indigo-600 group-hover:text-indigo-800" />
-              <p className={`mt-2 text-sm font-medium ${file ? "text-green-600" : "text-gray-600"} group-hover:text-indigo-800`}>
-                {file ? file.name : "Drop files here or click to upload"}
-              </p>
-              <input
-                type="file"
-                accept=".csv"
-                className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
-                onChange={handleFileChange}
-              />
-            </div>
+        <form onSubmit={handleSubmit} className="flex flex-col items-center">
+          <div
+            className={`group relative flex h-32 w-full max-w-lg cursor-pointer flex-col items-center justify-center rounded-lg border-2 ${
+              file ? "border-indigo-300 bg-indigo-50" : "border-dashed border-indigo-600 bg-white"
+            } transition-colors hover:border-indigo-800`}
+          >
+            <UploadIcon className="h-8 w-8 text-indigo-600 group-hover:text-indigo-800" />
+            <p className={`mt-2 text-sm font-medium ${file ? "text-indigo-600" : "text-gray-600"} group-hover:text-indigo-800`}>
+              {file ? file.name : "Drop files here or click to upload"}
+            </p>
+            <input
+              type="file"
+              accept=".csv"
+              className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+              onChange={handleFileChange}
+            />
           </div>
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center mt-4 space-x-4">
             <Button
               type="submit"
-              className={`w-full ${loading ? "bg-gray-400" : "bg-indigo-600"} text-white`}
-              disabled={loading}
+              className={`px-4 py-2 ${loading || !file ? "bg-gray-400" : "bg-indigo-600"} text-white rounded-md`}
+              disabled={loading || !file}
             >
               {loading ? "Uploading..." : "Upload File"}
             </Button>
+            {file && (
+              <Button
+                type="button"
+                className="px-4 py-2 bg-red-400 text-white rounded-md"
+                onClick={handleReset}
+              >
+                Reset
+              </Button>
+            )}
           </div>
         </form>
         {result && (
-          <div className="mt-4 p-4 rounded-md bg-indigo-100 text-indigo-700">
-            <h4 className="text-lg font-bold">Analysis Result:</h4>
-            <p className="text-2xl font-bold text-indigo-800">{result.decision}</p>
-            <p className="mt-2"><strong>Justification:</strong></p>
-            <ul className="list-disc list-inside">
-              {result.justification.map((item: string, index: number) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-            <p className="mt-2"><strong>Indicators:</strong></p>
-            <div className="grid grid-cols-2 gap-2">
-              {Object.entries(result.indicators).map(([key, value]) => (
-                <div key={key} className="p-2 bg-white rounded-md shadow-sm">
-                  <strong>{key}:</strong> {value}
-                </div>
-              ))}
+          <div className="mt-8 space-y-8">
+            <div className="p-6 rounded-lg bg-indigo-50 text-indigo-700 text-center">
+              <h4 className="text-2xl font-bold mb-4">Analysis Result</h4>
+              <p className="text-4xl font-bold text-indigo-800 mb-4">{result.decision}</p>
+              <p className="text-lg font-semibold mb-2">Justification</p>
+              <ul className="list-disc list-inside mb-4">
+                {result.justification.map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+              <p className="text-lg font-semibold mb-2">Indicators</p>
+              <div className="grid grid-cols-2 gap-4">
+                {Object.entries(result.indicators).map(([key, value]) => (
+                  <div key={key} className="p-4 bg-white rounded-lg shadow-md text-center">
+                    <strong>{key}:</strong> {value}
+                  </div>
+                ))}
+              </div>
+              {result.warning && (
+                <p className="mt-4 text-red-600 font-semibold">{result.warning}</p>
+              )}
             </div>
-            {result.warning && (
-              <p className="mt-2 text-red-600"><strong>Warning:</strong> {result.warning}</p>
-            )}
           </div>
         )}
       </div>

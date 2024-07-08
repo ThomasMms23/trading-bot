@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Dashboard from "@/components/dashboard";
 import Footer from "@/components/footer";
 import Image from "next/image";
 import logo from "../app/assets/logo.png";
@@ -11,10 +10,10 @@ import TweetSection from "@/components/tweetSection";
 import UploadCsv from "@/components/uploadCsv";
 
 const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: "CSV analyse", href: "#csv" },
+  { name: "Tweet analyse", href: "#tweet" },
+  { name: "Pricing", href: "#pricing" },
+  { name: "Reviews", href: "#reviews" },
 ];
 
 export default function Example() {
@@ -183,13 +182,10 @@ export default function Example() {
             className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
           />
         </div>
-        <div className="mx-auto max-w-5xl pb-32">
-          <Dashboard />
-        </div>
-        <div className="mx-auto max-w-5xl pb-32">
+        <div className="mx-auto max-w-5xl pb-16">
           <UploadCsv />
         </div>
-        <div className="mx-auto max-w-5xl pb-32 bg-gray-800 rounded-3xl">
+        <div className="mx-auto max-w-5xl pb-16">
           <TweetSection />
         </div>
       </div>
