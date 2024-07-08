@@ -1,9 +1,4 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/jCgSLwnrPys
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-export default function Component() {
+export default function Features() {
   return (
     <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
       <div className="container px-4 md:px-6 space-y-10">

@@ -7,7 +7,8 @@ import Footer from "@/components/footer";
 import Image from "next/image";
 import logo from "../app/assets/logo.png";
 import TweetSection from "@/components/tweetSection";
-import Features from "@/components/Features";
+import Features from "@/components/featuresSection";
+import Pricing from "@/components/PricingSection";
 import UploadCsv from "@/components/uploadCsv";
 
 const navigation = [
@@ -192,6 +193,9 @@ export default function Example() {
         </div>
         <div className="mx-auto max-w-5xl pb-16">
           <Features />
+        </div>
+        <div className="mx-auto max-w-5xl pb-16">
+          <Pricing />
         </div>
       </div>
       <Footer />
